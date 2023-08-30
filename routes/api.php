@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Models\User;
+use App\Models\userAddInfo;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware(['auth:sanctum'])->get('/userAddInfo', function (Request $request) {
+    return $request->userAddInfo();
+});
+
+Route::post('show', [UserController::class,'show']);
+Route::post('addition', [UserController::class,'addition']);
+Route::post('login', [UserController::class,'login']);
