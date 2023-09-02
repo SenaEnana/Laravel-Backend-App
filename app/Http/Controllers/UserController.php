@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\userAddInfo;
+use App\Models\Student;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Hash;
 //the above method that i imported is used to encode the password
 // use Illuminate\View\View;
@@ -18,37 +18,35 @@ class UserController extends Controller
      */
     function show(Request $req)
     {
-        $user= new User;
-        $user ->name= $req->input('name');
-        $user ->email= $req->input('email');
-        // $user ->phoneNo= $req->input('phoneNo');
-        // $user ->address= $req->input('address');
-        // $user ->confirm= Hash::make($req->input('password'));
-        $user ->password= Hash::make($req->input('password'));
+        $student= new Student;
+        $student ->name= $req->input('name');
+        $student ->email= $req->input('email');
+        $student ->phoneNo= $req->input('phoneNo');
+        $student ->address= $req->input('address');
+        $student ->password= Hash::make($req->input('password'));
        
-        $user ->save();
-        return $user;
+        $student ->save();
+        return $student;
     }
 function addition(Request $req)
 {
-  
-    $userAddInfo = new userAddInfo;
-    $userAddInfo->expert = $req->input('expert');
-    $userAddInfo->select = $req->input('select');
-    // $userAddInfo->subject = $req->input('subject');
-    // $userAddInfo->time = $req->input('time');
-    $userAddInfo ->password= Hash::make($req->input('password'));
+    $customer = new Customer;
+    $customer->expert = $req->input('expert');
+    $customer->select = $req->input('select');
+    $customer->subject = $req->input('subject');
+    $customer->time = $req->input('time');
+    $customer ->password= Hash::make($req->input('password'));
     
-    $userAddInfo ->save();
-    return $userAddInfo;
+    $customer ->save();
+    return $customer;
 }
 
     function login(Request $req){
-        $user= User::where('email', $req->email)->first();
-       if(!$user || !Hash::check($req->password,$user->password))
+        $student= Student::where('email', $req->email)->first();
+       if(!$student || !Hash::check($req->password,$student->password))
        {
         return ["error"=>"Email or Password is not match"];
        }
-        return $user; 
+        return $student; 
     }
 }

@@ -3,28 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
-
-class userAddInfo extends Models
+class Customer extends Model
 {
-    protected $table = 'users-add-info';
+    public $table = 'customers';
+
     use HasApiTokens, HasFactory, Notifiable;
-    
-    /**
+
+      /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'expert',
+        'select',
         'subject',
         'time',
-        'select',
         'password',
     ];
 
-    /**
+     /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -34,6 +36,15 @@ class userAddInfo extends Models
         'remember_token',
     ];
 
-    public $timestamps = true;
+    public $timestamps = false;
 
+        /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+protected $casts = [
+    'email_verified_at' => 'datetime',
+    'password' => 'hashed',
+];
 }
