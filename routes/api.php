@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\Student;
 use App\Models\Customer;
+use App\Models\CreateStudent;
+use App\Models\CreateTeacher;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,14 +27,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::post('show', [UserController::class,'show']);
 Route::post('addition', [UserController::class,'addition']);
 Route::post('login', [UserController::class,'login']);
+Route::post('study', [UserController::class,'study']);
+Route::post('teach', [UserController::class,'teach']);
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile/{id}', [ProfileController::class, 'display'])->name('profile.display');
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-// Route::post('password/email',  ForgotPasswordController::class);
-// Route::post('password/code/check', CodeCheckController::class);
-// Route::post('password/reset', ResetPasswordController::class);
+ //Route::get('email/verify/{id}', [\App\Http\Controllers\VerificationController::class, 'verify'])->name(name:'verification.verify');
