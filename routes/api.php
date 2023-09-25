@@ -30,5 +30,7 @@ Route::get('listStudents', [UserController::class,'listStudents']);
 Route::get('listTeachers', [UserController::class,'listTeachers']);
 Route::delete('deleteStudent/{id}', [UserController::class,'deleteStudent']);
 Route::delete('deleteTeacher/{id}', [UserController::class,'deleteTeacher']);
+Route::get('getStudent/{id}', [UserController::class,'getStudent']);
+Route::get('getTeacher/{id}', [UserController::class,'getTeacher']);
 
  //Route::get('email/verify/{id}', [\App\Http\Controllers\VerificationController::class, 'verify'])->name(name:'verification.verify');

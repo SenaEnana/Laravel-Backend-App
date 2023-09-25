@@ -99,6 +99,12 @@ else{
 }
 }
 
+function getStudent($id){
+    return CreateStudent::find($id);
+}
+function getTeacher($id){
+    return CreateTeacher::find($id);
+}
 }
 
 
