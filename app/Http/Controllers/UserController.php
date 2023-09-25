@@ -102,8 +102,41 @@ else{
 function getStudent($id){
     return CreateStudent::find($id);
 }
+
 function getTeacher($id){
     return CreateTeacher::find($id);
+}
+
+function updateStudent(Request $req){
+    $create_student = CreateStudent::find($req->id);
+    $create_student->name = $req->name;
+    $create_student->gender = $req->gender;
+    $create_student->grade = $req->grade;
+    $create_student->subject = $req->subject;
+    $create_student->date = $req->date; 
+
+    $result = $create_student->save(); 
+if($result){
+    return ["result"=>"student is updated"];
+}else{
+    return ["result"=>"student is not updated"];
+}
+}
+
+function updateTeacher(Request $req){
+    $create_teacher = CreateTeacher::find($req->id);
+    $create_teacher->name = $req->name;
+    $create_teacher->expert = $req->expert;
+    $create_teacher->gender = $req->gender;
+    $create_teacher->educationLevel = $req->educationLevel;
+    $create_teacher->date = $req->date; 
+
+    $result = $create_teacher->save(); 
+if($result){
+    return ["result"=>"teacher is updated"];
+}else{
+    return ["result"=>"teacher is not updated"];
+}
 }
 }
 

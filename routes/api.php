@@ -32,5 +32,7 @@ Route::delete('deleteStudent/{id}', [UserController::class,'deleteStudent']);
 Route::delete('deleteTeacher/{id}', [UserController::class,'deleteTeacher']);
 Route::get('getStudent/{id}', [UserController::class,'getStudent']);
 Route::get('getTeacher/{id}', [UserController::class,'getTeacher']);
+Route::put('updateStudent', [UserController::class,'updateStudent']);
+Route::put('updateTeacher', [UserController::class,'updateTeacher']);
 
  //Route::get('email/verify/{id}', [\App\Http\Controllers\VerificationController::class, 'verify'])->name(name:'verification.verify');
