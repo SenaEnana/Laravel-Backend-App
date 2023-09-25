@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Student;
-use App\Models\Customer;
+use App\Models\User;
 use App\Models\CreateStudent;
 use App\Models\CreateTeacher;
 use Illuminate\Support\Facades\Hash;
@@ -15,32 +14,22 @@ class UserController extends Controller
    /**
      * Show the profile for a given user.
      */
-    function show(Request $req)
+
+    function register(Request $req)
     {
-        $student= new Student;
-        $student ->name= $req->input('name');
-        $student ->email= $req->input('email');
-        $student ->phoneNo= $req->input('phoneNo');
-        $student ->address= $req->input('address');
-        $student ->password= Hash::make($req->input('password'));
+        $user= new User;
+        $user ->name= $req->input('name');
+        $user ->email= $req->input('email');
+        $user ->phoneNo= $req->input('phoneNo');
+        $user ->address= $req->input('address');
+        $user ->password= Hash::make($req->input('password'));
+        $user ->confirmPassword= Hash::make($req->input('confirmPassword'));
        
-        $student ->save();
-        return $student;
+        $user ->save();
+        return $user;
 
     }
     
-function addition(Request $req)
-{
-    $customer = new Customer;
-    $customer->expert = $req->input('expert');
-    $customer->select = $req->input('select');
-    $customer->subject = $req->input('subject');
-    $customer->time = $req->input('time');
-    $customer ->password= Hash::make($req->input('password'));
-   
-    $customer ->save();
-    return $customer;
-}
 function study(Request $req)
 {
      $create_student = new CreateStudent;
@@ -75,7 +64,45 @@ function teach(Request $req)
        }
         return $student; 
     }
+
+    function listStudents()
+    {
+return CreateStudent::all();
+    }
+
+    function listTeachers()
+{
+return CreateTeacher::all();
 }
+
+function deleteStudent($id)
+{
+    $student_result = CreateStudent::where('id',$id)->delete();
+if($student_result)
+{
+    return ["$student_result"=>"student has been deleted"];
+}
+else{
+    return ["$student_result"=>"operation failed user already deleted!"];
+}
+}
+
+function deleteTeacher($id)
+{
+    $teacher_result = CreateTeacher::where('id',$id)->delete();
+if($teacher_result)
+{
+    return ["$teacher_result"=>"teacher has been deleted"];
+}
+else{
+    return ["$teacher_result"=>"operation failed user already deleted!"];
+}
+}
+
+}
+
+
+
 
 //         if($student){
 //             try{

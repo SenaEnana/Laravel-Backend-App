@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\Student;
-use App\Models\Customer;
+use App\Models\User;
 use App\Models\CreateStudent;
 use App\Models\CreateTeacher;
 /*
@@ -23,11 +22,13 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::post('show', [UserController::class,'show']);
-Route::post('addition', [UserController::class,'addition']);
+Route::post('register', [UserController::class,'register']);
 Route::post('login', [UserController::class,'login']);
 Route::post('study', [UserController::class,'study']);
 Route::post('teach', [UserController::class,'teach']);
+Route::get('listStudents', [UserController::class,'listStudents']);
+Route::get('listTeachers', [UserController::class,'listTeachers']);
+Route::delete('deleteStudent/{id}', [UserController::class,'deleteStudent']);
+Route::delete('deleteTeacher/{id}', [UserController::class,'deleteTeacher']);
 
  //Route::get('email/verify/{id}', [\App\Http\Controllers\VerificationController::class, 'verify'])->name(name:'verification.verify');
