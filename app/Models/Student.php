@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
-class CreateStudent extends Model
+class Student extends Model
 {
     use HasFactory;
     public $table = 'create_students';
@@ -49,4 +49,3 @@ protected $casts = [
     'password' => 'hashed',
 ];
 }
-
