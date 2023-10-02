@@ -20,6 +20,7 @@ class UserController extends Controller
         $user ->email= $req->input('email');
         $user ->phoneNo= $req->input('phoneNo');
         $user ->address= $req->input('address');
+        $user ->role= $req->input('role');
         $user ->password= Hash::make($req->input('password'));
         $user ->confirmPassword= Hash::make($req->input('confirmPassword'));
        
