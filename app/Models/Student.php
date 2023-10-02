@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-    public $table = 'create_students';
+    public $table = 'students';
 
     use HasApiTokens, HasFactory, Notifiable;
 

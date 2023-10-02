@@ -10,18 +10,18 @@ class StudentController extends Controller
 {
 
 function createStudent(Request $req){
-
+    
      $student = new Student;
     $student->name = $req->input('name');
     $student->gender = $req->input('gender');
     $student->grade = $req->input('grade');
     $student->subject = $req->input('subject');
     $student->date = $req->input('date'); 
-
-    if($student ->save()){
+    
+    if( $student ->save()){
         return $student;
       }
-        return response()->json(["status"=>500,"message"=>"internal server error"]);
+     return response()->json(["status"=>500,"message"=>"internal server error"]);
 }
 
 
@@ -44,7 +44,6 @@ function getStudent($id){
 }
 
 function updateStudent($id, Request $req){
-    error_log($req);
     $student = Student::find($id);
     $student->name = $req->name;
     $student->gender = $req->gender;
