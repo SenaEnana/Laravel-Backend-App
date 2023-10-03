@@ -13,6 +13,8 @@ function createStudent(Request $req){
     
      $student = new Student;
     $student->name = $req->input('name');
+    $student->phoneNo = $req->input('phoneNo');
+    $student->address = $req->input('address');
     $student->gender = $req->input('gender');
     $student->grade = $req->input('grade');
     $student->subject = $req->input('subject');
@@ -23,7 +25,6 @@ function createStudent(Request $req){
       }
      return response()->json(["status"=>500,"message"=>"internal server error"]);
 }
-
 
 function listStudents(){
     return Student::all();
@@ -46,6 +47,8 @@ function getStudent($id){
 function updateStudent($id, Request $req){
     $student = Student::find($id);
     $student->name = $req->name;
+    $student->phoneNo = $req->phoneNo;
+    $student->address = $req->address;
     $student->gender = $req->gender;
     $student->grade = $req->grade;
     $student->subject = $req->subject;

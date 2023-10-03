@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Models\Role; 
 
 class UserController extends Controller
 {
@@ -18,9 +19,8 @@ class UserController extends Controller
         $user= new User;
         $user ->name= $req->input('name');
         $user ->email= $req->input('email');
-        $user ->phoneNo= $req->input('phoneNo');
-        $user ->address= $req->input('address');
         $user ->role= $req->input('role');
+        $user ->file_path= $req->file('file')->store('user_images');
         $user ->password= Hash::make($req->input('password'));
         $user ->confirmPassword= Hash::make($req->input('confirmPassword'));
        

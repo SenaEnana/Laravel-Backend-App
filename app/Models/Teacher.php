@@ -20,6 +20,8 @@ class Teacher extends Model
      */
     protected $fillable = [
         'name',
+        'phoneNo',
+        'address',
         'gender',
         'expert',
         'educationLevel',

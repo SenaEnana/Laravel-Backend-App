@@ -23,9 +23,8 @@
  protected $fillable = [
      'name',
      'email',
-     'phoneNo',
-     'address',
      'role',
+     'file_path',
      'password',
      'confirmPassword',
  ];
@@ -47,6 +46,7 @@
       *
       * @var array<string, string>
       */
+
  protected $casts = [
      'email_verified_at' => 'datetime',
      'password' => 'hashed',

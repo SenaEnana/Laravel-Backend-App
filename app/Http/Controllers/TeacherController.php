@@ -13,6 +13,8 @@ class TeacherController extends Controller
 
          $teacher = new Teacher;
         $teacher->name = $req->input('name');
+        $teacher->phoneNo = $req->input('phoneNo');
+        $teacher->address = $req->input('address');
         $teacher->gender = $req->input('gender');
         $teacher->expert= $req->input('expert');
         $teacher->educationLevel = $req->input('educationLevel');
@@ -48,6 +50,8 @@ function getTeacher($id){
 function updateTeacher($id, Request $req){
     $teacher = Teacher::find($id);
     $teacher->name = $req->name;
+    $teacher->phoneNo = $req->phoneNo;
+    $teacher->address = $req->address;
     $teacher->expert = $req->expert;
     $teacher->gender = $req->gender;
     $teacher->educationLevel = $req->educationLevel;
