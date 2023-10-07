@@ -46,4 +46,3 @@ Route::put('updateTeacher/{id}', [TeacherController::class,'updateTeacher']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- //Route::get('email/verify/{id}', [\App\Http\Controllers\VerificationController::class, 'verify'])->name(name:'verification.verify');

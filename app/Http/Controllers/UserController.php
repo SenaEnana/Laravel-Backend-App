@@ -20,7 +20,7 @@ class UserController extends Controller
         $user ->name= $req->input('name');
         $user ->email= $req->input('email');
         $user ->role= $req->input('role');
-        $user ->file_path= $req->file('file')->store('user_images');
+        $user ->file_path= $req->file('file')->store('users_image');
         $user ->password= Hash::make($req->input('password'));
         $user ->confirmPassword= Hash::make($req->input('confirmPassword'));
        
@@ -39,21 +39,3 @@ class UserController extends Controller
         return $user; 
     }
 }
-
-//         if($student){
-//             try{
-// Mail::mailer(name: 'smtp')->to($student->email)->send(new UserVerification($student));
-
-// return response()->json([
-//     'status' =>200,
-//     'message' => "Registered,verify your email address to login",
-// ],status: 200);
-//             }catch(\Exception $err){
-// $student->delete();
-
-//                 return response()->json([
-//                     'status' => 500,
-//                     'errors' => "could not send email verification,please try again",
-//                 ],status: 500);
-//             }
-//         }
