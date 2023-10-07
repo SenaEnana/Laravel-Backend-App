@@ -14,20 +14,28 @@ class UserController extends Controller
      * Show the profile for a given user.
      */
 
-    function registration(Request $req)
+    function registration(Request $request)
     {
-        $user= new User;
-        $user ->name= $req->input('name');
-        $user ->email= $req->input('email');
-        $user ->role= $req->input('role');
-        $user ->file_path= $req->file('file')->store('users_image');
-        $user ->password= Hash::make($req->input('password'));
-        $user ->confirmPassword= Hash::make($req->input('confirmPassword'));
-       
-      if(  $user ->save()){
-        return $user;
-      }
-        return response()->json(["status"=>500,"message"=>"internal server error"]);
+        // Store the uploaded file 
+        if ($request->hasFile('file_path')) { 
+            $file = $request->file('file_path'); 
+            $filename = time() . '_' . $file->getClientOriginalName(); 
+            $file->storeAs('users_image', $filename); // Store the file in the 'uploads' directory 
+            // $user ->file_path= $req->file('file')->store('users_image');
+        } 
+ 
+        // Create a new user with the validated data and file path 
+        $user = User::create([ 
+            'name' => $request->input('name'), 
+            'email' => $request->input('email'), 
+            'file_path' => $filename, 
+            'role' => $request->input('role'), 
+            'password' => bcrypt($request->input('password')), 
+            'confirmPassword' => bcrypt($request->input('confirmPassword')), 
+        ]); 
+         $user->save();
+        // You can return a response or perform additional actions here 
+        return response()->json(['message' => 'User registered successfully']);
     }
 
     function login(Request $req){
