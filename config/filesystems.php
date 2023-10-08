@@ -70,7 +70,7 @@ return [
     */
 
     'links' => [
-        public_path('users_image') => storage_path('app/users_image'),
+        public_path('users_image') => storage_path('app/public/users_image'),
     ],
 
 ];

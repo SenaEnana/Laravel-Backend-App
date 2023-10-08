@@ -20,7 +20,7 @@ class UserController extends Controller
         if ($request->hasFile('file_path')) { 
             $file = $request->file('file_path'); 
             $filename = time() . '_' . $file->getClientOriginalName(); 
-            $file->storeAs('users_image', $filename); // Store the file in the 'uploads' directory 
+            $file->storeAs('public/users_image', $filename); // Store the file in the 'uploads' directory 
             // $user ->file_path= $req->file('file')->store('users_image');
         } 
  
