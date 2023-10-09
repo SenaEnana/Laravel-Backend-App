@@ -15,16 +15,14 @@ class UserController extends Controller
      */
 
     function registration(Request $request)
-    {
-        // Store the uploaded file 
+    {        
         if ($request->hasFile('file_path')) { 
             $file = $request->file('file_path'); 
             $filename = time() . '_' . $file->getClientOriginalName(); 
-            $file->storeAs('public/users_image', $filename); // Store the file in the 'uploads' directory 
-            // $user ->file_path= $req->file('file')->store('users_image');
+            $file->storeAs('/public/users_image', $filename); 
+            // $user ->file_path= $request->file('file')->store('users_image');
         } 
  
-        // Create a new user with the validated data and file path 
         $user = User::create([ 
             'name' => $request->input('name'), 
             'email' => $request->input('email'), 
@@ -33,17 +31,31 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password')), 
             'confirmPassword' => bcrypt($request->input('confirmPassword')), 
         ]); 
-         $user->save();
-        // You can return a response or perform additional actions here 
-        return response()->json(['message' => 'User registered successfully']);
+        
+        if(  $user->save()){
+            return "hello again";
+            // return response()->json(['message' => 'User registered successfully']);
+          }
+          return "sorry";
+            // return response()->json(["status"=>500,"message"=>"internal server error"]);
     }
 
-    function login(Request $req){
-        $user= User::where('email', $req->email)->first();
-       if(!$user || !Hash::check($req->password,$user->password))
-       {
-        return ["error"=>"Email or Password is not match"];
-       }
-        return $user; 
+ 
+    function userLogin(Request $request){
+        $user= User::where('email', $request->email)->first();
+        if(!$user || !Hash::check($request->password,$user->password))
+        {
+            return ["error"=>"Email or Password is not match"];
+        }
+        return $user;
     }
-}
+
+    function userRole(Request $request){
+        $user= User::where('email', $request->email)->first();
+        if($user->role === "Admin")
+        {
+            return ["result"=>"you are admin you can access the information"];
+            }
+            return ["result"=>"you are either student or teacher you can't access"];
+        }
+  }

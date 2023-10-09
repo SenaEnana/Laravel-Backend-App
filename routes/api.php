@@ -23,15 +23,12 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('delete')->middleware(['auth','isAdmin'])->group(function(){
-
-});
-
 Route::delete('deleteStudent/{id}', [StudentController::class,'deleteStudent']);
 Route::delete('deleteTeacher/{id}', [TeacherController::class,'deleteTeacher']);
 
 Route::post('registration', [UserController::class,'registration']);
-Route::post('login', [UserController::class,'login']);
+Route::post('userLogin', [UserController::class,'userLogin']);
+Route::post('userRole',[UserController::class,'userRole']);
 
 Route::post('createStudent', [StudentController::class,'createStudent']);
 Route::get('listStudents', [StudentController::class,'listStudents']);
