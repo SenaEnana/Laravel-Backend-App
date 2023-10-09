@@ -33,10 +33,10 @@ class UserController extends Controller
         ]); 
         
         if(  $user->save()){
-            return "hello again";
+            return ["result"=>"User registered successfully"];
             // return response()->json(['message' => 'User registered successfully']);
           }
-          return "sorry";
+          return ["result"=>"internal server error the user is not registered"];
             // return response()->json(["status"=>500,"message"=>"internal server error"]);
     }
 
@@ -49,13 +49,4 @@ class UserController extends Controller
         }
         return $user;
     }
-
-    function userRole(Request $request){
-        $user= User::where('email', $request->email)->first();
-        if($user->role === "Admin")
-        {
-            return ["result"=>"you are admin you can access the information"];
-            }
-            return ["result"=>"you are either student or teacher you can't access"];
-        }
   }

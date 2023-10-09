@@ -28,7 +28,6 @@ Route::delete('deleteTeacher/{id}', [TeacherController::class,'deleteTeacher']);
 
 Route::post('registration', [UserController::class,'registration']);
 Route::post('userLogin', [UserController::class,'userLogin']);
-Route::post('userRole',[UserController::class,'userRole']);
 
 Route::post('createStudent', [StudentController::class,'createStudent']);
 Route::get('listStudents', [StudentController::class,'listStudents']);
