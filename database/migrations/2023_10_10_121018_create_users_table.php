@@ -33,4 +33,3 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
-//create default role for the teachers and for the students 

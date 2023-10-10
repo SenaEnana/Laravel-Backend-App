@@ -27,7 +27,7 @@ class UserController extends Controller
             'name' => $request->input('name'), 
             'email' => $request->input('email'), 
             'file_path' => $filename, 
-            'role' => $request->input('role'), 
+            'role' => "student", 
             'password' => bcrypt($request->input('password')), 
             'confirmPassword' => bcrypt($request->input('confirmPassword')), 
         ]); 
