@@ -23,21 +23,24 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::delete('deleteStudent/{id}', [StudentController::class,'deleteStudent']);
-Route::delete('deleteTeacher/{id}', [TeacherController::class,'deleteTeacher']);
 
 Route::post('registration', [UserController::class,'registration']);
 Route::post('userLogin', [UserController::class,'userLogin']);
+Route::get('list',[UserController::class,'list']);
+Route::get('getUser/{id}', [UserController::class,'getUser']);
+Route::put('updateUser/{id}', [UserController::class,'updateUser']);
 
 Route::post('createStudent', [StudentController::class,'createStudent']);
 Route::get('listStudents', [StudentController::class,'listStudents']);
 Route::get('getStudent/{id}', [StudentController::class,'getStudent']);
 Route::put('updateStudent/{id}', [StudentController::class,'updateStudent']);
+Route::delete('deleteStudent/{id}', [StudentController::class,'deleteStudent']);
 
 Route::post('createTeacher', [TeacherController::class,'createTeacher']);
 Route::get('listTeachers', [TeacherController::class,'listTeachers']);
 Route::get('getTeacher/{id}', [TeacherController::class,'getTeacher']);
 Route::put('updateTeacher/{id}', [TeacherController::class,'updateTeacher']);
+Route::delete('deleteTeacher/{id}', [TeacherController::class,'deleteTeacher']);
 
 Auth::routes();
 

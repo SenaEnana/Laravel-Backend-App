@@ -49,4 +49,38 @@ class UserController extends Controller
         }
         return $user;
     }
+
+    function list(Request $request){
+        return User::all();
+    }
+
+    // function getUser($id){
+    //     return User::find($id);
+    // }   
+
+
+    // function updateUser($id, Request $req){
+    //     $user = User::find($id);
+    //     $user->name = $req->name;
+    //     $user->email = $req->email;
+    //     $user->password = $req->password;
+    //     if ($req->hasFile('file_path')) { 
+    //         $file = $req->file('file_path'); 
+    //         $filename = time() . '_' . $file->getClientOriginalName(); 
+    //         $file->storeAs('/public/users_image', $filename); 
+    //         // $user ->file_path= $request->file('file')->store('users_image');
+    //     } 
+    //     $user->file_path = $req->filename;
+    //     $result = $user->save(); 
+    //     if($result){
+    //         return ["result"=>"user is updated"];
+    //     }else{
+    //         return ["result"=>"user is not updated"];
+    //     }
+    // }
+    function getUser($id){
+        // return User::find($id);
+        $user = User::find($id);
+        return $user->file_path;
+    }
   }

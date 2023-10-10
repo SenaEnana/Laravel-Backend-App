@@ -25,7 +25,8 @@ class Teacher extends Model
         'gender',
         'expert',
         'educationLevel',
-        'date',
+        'day',
+        'time',
     ];
 
      /**

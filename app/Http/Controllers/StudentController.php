@@ -18,11 +18,12 @@ function createStudent(Request $req){
     $student->gender = $req->input('gender');
     $student->grade = $req->input('grade');
     $student->subject = $req->input('subject');
-    $student->date = $req->input('date'); 
-    
-    if( $student ->save()){
+    $student->day = $req->input('day'); 
+    $student->time = $req->input('time'); 
+
+     if( $student ->save()){
         return $student;
-      }
+     }
      return response()->json(["status"=>500,"message"=>"internal server error"]);
 }
 
@@ -52,7 +53,8 @@ function updateStudent($id, Request $req){
     $student->gender = $req->gender;
     $student->grade = $req->grade;
     $student->subject = $req->subject;
-    $student->date = $req->date; 
+    $student->day = $req->day; 
+    $student->time = $req->time; 
 
     $result = $student->save(); 
     if($result){
@@ -61,4 +63,4 @@ function updateStudent($id, Request $req){
         return ["result"=>"student is not updated"];
     }
 }
-}
+}    

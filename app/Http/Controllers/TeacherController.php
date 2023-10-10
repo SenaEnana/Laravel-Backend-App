@@ -18,7 +18,8 @@ class TeacherController extends Controller
         $teacher->gender = $req->input('gender');
         $teacher->expert= $req->input('expert');
         $teacher->educationLevel = $req->input('educationLevel');
-        $teacher->date = $req->input('date'); 
+        $teacher->day = $req->input('day'); 
+        $teacher->time = $req->input('time'); 
 
         if( $teacher ->save()){
             return $teacher;
@@ -55,7 +56,8 @@ function updateTeacher($id, Request $req){
     $teacher->expert = $req->expert;
     $teacher->gender = $req->gender;
     $teacher->educationLevel = $req->educationLevel;
-    $teacher->date = $req->date; 
+    $teacher->day = $req->day; 
+    $teacher->time = $req->time; 
 
     $result = $teacher->save(); 
     if($result){

@@ -26,7 +26,8 @@ class Student extends Model
         'gender',
         'grade',
         'subject',
-        'date',
+        'day',
+        'time',
     ];
 
      /**
